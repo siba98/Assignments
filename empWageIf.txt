@@ -1,0 +1,17 @@
+Q-)Add Part time Employee & Wage.
+#!/bin/bash -x
+
+isPartTime=1;
+isHalfTime=2;
+empRatePerHr=20;
+randomCheck=$((RANDOM%3));
+if [ $isPartTime == $randomCheck ];
+then
+        empHrs=8;
+elif [ $isHalfTime == $randomCheck ];
+then
+        empHrs=4;
+else
+        empHrs=0;
+fi
+salary=$(($empRatePerHr*$empHrs));
