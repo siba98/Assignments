@@ -33,7 +33,7 @@ Q-2)Extend the above program to sort the array and then find the 2nd largest and
 
 #!/bin/bash -x
 
-array=0
+array()
 for(( i=0; i<=10; i++ ))
 do
         numbers=$((($RANDOM%900)+100));
