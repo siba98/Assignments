@@ -1,0 +1,105 @@
+[UC1]-As a Simulator start with Flipping a Coin to Display Heads or Tails as winner.
+
+#!/bin/bash -x
+
+head=1;
+tail=0;
+rand=$((RANDOM%2))
+if [ $head -eq $rand ]
+then
+        echo Heads;
+else
+        echo Tails;
+fi
+
+[UC2]-As a simulator, loop through Multiple times of flipping a coin and show number of times head and tail has won.
+
+#!/bin/bash -x
+
+headCount=1;
+tailCount=0;
+n=20;
+for(( i=0; i<=$n; i++ ))
+do
+        rand=$((RANDOM%2))
+        if [ $rand -eq 1 ]
+        then
+                $((headCount++))
+        else
+                $((tailCount++))
+        fi
+done
+echo "heads: " $headCount
+echo "tails: " $tailCount
+
+[UC3]-Modify the earlier UC 2 to continue till either of them have won 21 times. Show if it’s a Win or Tie. If Win then who won and by how much.
+
+#!/bin/bash -x
+
+headCount=1;
+tailCount=0;
+n=20;
+while [[ $headCount -le $n && $tailCount -le $n ]]
+do
+        rand=$((RANDOM%2))
+        if [ $rand -eq 1 ]
+        then
+                $((headCount++))
+        else
+                $((tailCount++))
+        fi
+done
+echo "heads: " $headCount
+echo "tails: " $tailCount
+
+if [ $headCount -lt $tailCount ]
+then
+        diff=$((tailCount - headCount))
+        echo "Tail wins by" $diff
+else
+        diff1=$((headCount - tailCount))
+        echo "Head wins by" $diff1
+fi
+
+[UC4]- Extend UC 3 to ensure if its tie then the game continues till the difference of minimum 2 points is achieved.
+
+#!/bin/bash -x
+
+headCount=1;
+tailCount=0;
+n=20;
+while [[ $headCount -le $n && $tailCount -le $n ]]
+do
+        rand=$((RANDOM%2))
+        if [ $rand -eq 1 ]
+        then
+                $((headCount++))
+        else
+                $((tailCount++))
+        fi
+done
+echo "heads: " $headCount
+echo "tails: " $tailCount
+
+if [ $headCount -eq $tailCount ]
+then
+        while [[ $headCount -le $((headCount+2)) && $tailCount -le $((tailCount+2)) ]]
+        do
+                rand=$((RANDOM%2))
+                        if [ $coin -eq 1 ]
+                        then
+                                $((headCount++))
+                        else
+                                $((tailCount++))
+                        fi
+        done
+fi
+
+if [ $headCount -lt $tailCount ]
+then
+        diff=$((tailCount - headCount))
+        echo "Tail wins by" $diff
+else
+        diff1=$((headCount - tailCount))
+        echo "Head wins by" $diff1
+fi
