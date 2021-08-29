@@ -1,0 +1,163 @@
+[UC1]-As a Simulator start with Flipping a Coin to Display Heads or Tails.
+
+#!/bin/bash -x
+
+head=1;
+tail=0;
+rand=$((RANDOM%2))
+if [ $head -eq $rand ]
+then
+        echo Heads;
+else
+        echo Tails;
+fi
+
+[UC2]-As a simulator, loop through Multiple times of flipping a coin store the Singlet Combination in a Dictionary.Finally determine the percentage 
+of the Singlet Combination.
+Singlet shows Heads or Tails.
+
+#!/bin/bash -x
+
+headCount=0;
+tailCount=0;
+num=20;
+declare -A count
+for((i=0;i<$num;i++))
+do
+coin=$((RANDOM%2))
+        if[ $coin -eq 0 ]
+                then
+                $((headCount++))
+        else
+                $((tailCount++))
+        fi
+done
+count[head]="$headCount"
+count[tail]="$tailCount"
+headPercent=$((100*${headCount}/${num}))
+tailPercent=$((100*${tailCount}/${num}))
+echo $headPercent
+echo $tailPercent
+echo ${count[@]}
+
+[UC3]-As a simulator, loop to create a Doublet Combination. Store the doublet combination as well as the percentage.
+Doublet Combinations are HH, HT, TH, and TT.
+
+#!/bin/bash -x
+
+hh-0;
+tt=0;
+ht=0;
+th=0;
+num=20;
+declare -A count
+for((i-0;i<$num;i++))
+do
+coin1=$((RANDOM%2))
+coin2=$((RANDOM%2))
+if[$coin1 -eq 1]&&[$coin2 -eq 1]
+ then
+ $((hh++))
+elif[$coin1 -eq 0]&&[$coin2 -eq 0]
+ then
+ $((tt++))
+elif[$coin1 -eq 0]&&[$coin2 -eq 0]
+ then
+ $((ht++))
+else
+ then
+ $((th++))
+fi
+done
+count[hh]="$hh"
+count[tt]="$tt"
+count[ht]="$ht"
+count[th]="$th"
+
+hhp=$((100*${hh}/${num}))
+ttp=$((100*${tt}/${num}))
+htp=$((100*${ht}/${num}))
+thp=$((100*${th}/${num}))
+
+echo $hhp
+echo $ttp
+echo $htp
+echo $thp
+
+echo ${count[@]}
+
+
+echo ${count[@]}
+
+[UC4]-As a simulator, do the same for Triplet Combination.
+
+#!/bin/bash -x
+hhh=0;
+hht=0;
+hth=0;
+htt=0;
+thh=0;
+ttt=0;
+tth=0;
+tht=0;
+num=20;
+declare -A count
+for((i=0;i<$num;i++))
+do
+        coin1=$((RANDOM%2))
+        coin2=$((RANDOM%2))
+        COIN3=$((RANDOM%2))
+if[ $count -eq 1 ] && [ $coin -eq 1 ] && [ $coin3 -eq 1 ]
+then
+        $((hhh++))
+elif[ $count -eq 1 ] && [ $coin -eq 1 ] && [ $coin3 -eq 0 ]
+then
+        $((hht++))
+elif[ $count -eq 1 ] && [ $coin -eq 0 ] && [ $coin3 -eq 1 ]
+then
+        $((hth++))
+elif[ $count -eq 1 ] && [ $coin -eq 0 ] && [ $coin3 -eq 0 ]
+then
+        $((htt++))
+elif[ $count -eq 0 ] && [ $coin -eq 0 ] && [ $coin3 -eq 0 ]
+then
+        $((ttt++))
+elif[ $count -eq 0 ] && [ $coin -eq 0 ] && [ $coin3 -eq 1 ]
+then
+        $((tth++))
+elif[ $count -eq 0 ] && [ $coin -eq 1 ] && [ $coin3 -eq 0 ]
+then
+        $((tht++))
+else
+        $((thh++))
+fi
+done
+count[hhh]="$hhh"
+count[hht]="$hht"
+count[hth]="$hth"
+count[htt]="$htt"
+count[ttt]="$ttt"
+count[tth]="$tth"
+count[tht]="$tht"
+count[thh]="$thh"
+
+hhhp=$((100*${hhh}/${num}))
+tttp=$((100*${ttt}/${num}))
+hhtp=$((100*${hht}/${num}))
+hthp=$((100*${hth}/${num}))
+http=$((100*${htt}/${num}))
+tthp=$((100*${tth}/${num}))
+thtp=$((100*${tht}/${num}))
+thhp=$((100*${thh}/${num}))
+
+echo $hhhp"%"
+echo $tttp"%"
+echo $hhtp"%"
+echo $hthp"%"
+echo $http"%"
+echo $tthp"%"
+echo $thtp"%"
+echo $thhp"%"
+
+echo ${count[@]}
+
