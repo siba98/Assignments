@@ -1,0 +1,226 @@
+[UC1]-Write program to take three inputs–a, b & c.
+
+#!/bin/bash -x
+
+read -p "Enter the value of a" a
+read -p "Enter the value of b" b
+read -p "Enter the value of c" c
+echo $a $b $c
+
+[UC2]-Compute a + b * c.
+
+#!/bin/bash -x
+
+read -p "Enter the value of a" a
+read -p "Enter the value of b" b
+read -p "Enter the value of c" c
+echo $a $b $c
+
+x1=$(((a+b)*c))
+echo $x1
+
+[UC3]-Compute a * b + c.
+
+#!/bin/bash -x
+
+read -p "Enter the value of a" a
+read -p "Enter the value of b" b
+read -p "Enter the value of c" c
+echo $a $b $c
+
+x2=$(((a*b)+c))
+echo $x2
+
+[UC4]-Compute c + a / b.
+
+#!/bin/bash -x
+
+read -p "Enter the value of a" a
+read -p "Enter the value of b" b
+read -p "Enter the value of c" c
+echo $a $b $c
+
+x3=$(((c+a)/b))
+echo $x3
+
+[UC5]-Compute a % b + c.
+
+#!/bin/bash -x
+
+read -p "Enter the value of a" a
+read -p "Enter the value of b" b
+read -p "Enter the value of c" c
+echo $a $b $c
+
+x4=$(((a%b)+c))
+echo $x4
+
+[UC6]-Store the results in a Dictionary for every Computation.
+
+$ cat Pdf1UC6.sh
+#!/bin/bash -x
+
+declare -A values
+read -p "Enter the value of a " a
+read -p "Enter the value of b " b
+read -p "Enter the value of c " c
+echo $a $b $c
+
+x1=$(((a+b)*c))
+echo $x1
+values[x1]="$((x1))"
+
+x2=$(((a*b)+c))
+echo $x2
+values[x2]="$((x2))"
+
+x3=$(((c+a)/b))
+echo $x3
+values[x3]="$((x3))"
+
+x4=$(((a%b)+c))
+echo $x4
+values[x4]="$((x4))"
+
+echo ${!values[@]}
+echo ${values[@]}
+
+[UC7]-Read the values from the Dictionary into the array.
+
+#!/bin/bash -x
+
+declare -A values
+read -p "Enter the value of a " a
+read -p "Enter the value of b " b
+read -p "Enter the value of c " c
+echo $a $b $c
+
+x1=$(((a+b)*c))
+echo $x1
+values[x1]="$((x1))"
+
+x2=$(((a*b)+c))
+echo $x2
+values[x2]="$((x2))"
+
+x3=$(((c+a)/b))
+echo $x3
+values[x3]="$((x3))"
+
+x4=$(((a%b)+c))
+echo $x4
+values[x4]="$((x4))"
+
+echo ${!values[@]}
+echo ${values[@]}
+
+n=0;
+for i in "${values[@]}"
+do
+        arr[((c++))]="$i"
+done
+echo ${arr[@]}
+
+[UC8]-Sort the results to show the Computation Result in the Descending Order.
+
+#!/bin/bash -x
+
+declare -A values
+read -p "Enter the value of a " a
+read -p "Enter the value of b " b
+read -p "Enter the value of c " c
+echo $a $b $c
+
+x1=$(((a+b)*c))
+echo $x1
+values[x1]="$((x1))"
+
+x2=$(((a*b)+c))
+echo $x2
+values[x2]="$((x2))"
+
+x3=$(((c+a)/b))
+echo $x3
+values[x3]="$((x3))"
+
+x4=$(((a%b)+c))
+echo $x4
+values[x4]="$((x4))"
+
+echo ${!values[@]}
+echo ${values[@]}
+
+n=0;
+for i in "${values[@]}"
+do
+        arr[((c++))]="$i"
+done
+echo ${arr[@]}
+
+arrlength=${#[@]};
+for(( i=0; i<=$arrlength; i++ ))
+do
+        for(( j=$i; j<=$arrlength; j++ ))
+        do
+                if[ ${arr[$i]} -lt ${arr[j]} ]
+                then
+                        temp=${arr[$i]}
+                        arr[$i]=${arr[$j]}
+                        arr[$j]=$temp
+                fi
+        done
+done
+echo array in descending order ${arr[@]}
+echo ${arr[@]}
+
+[UC9]-Sort the results to show the Computation Value in Ascending Order.
+
+#!/bin/bash -x
+
+declare -A values
+read -p "Enter the value of a " a
+read -p "Enter the value of b " b
+read -p "Enter the value of c " c
+echo $a $b $c
+
+x1=$(((a+b)*c))
+echo $x1
+values[x1]="$((x1))"
+
+x2=$(((a*b)+c))
+echo $x2
+values[x2]="$((x2))"
+
+x3=$(((c+a)/b))
+echo $x3
+values[x3]="$((x3))"
+
+x4=$(((a%b)+c))
+echo $x4
+values[x4]="$((x4))"
+
+echo ${!values[@]}
+echo ${values[@]}
+
+n=0;
+for i in "${values[@]}"
+do
+        arr[((c++))]="$i"
+done
+echo ${arr[@]}
+
+arrlength=${#[@]};
+for(( i=0; i<=$arrlength; i++ ))
+do
+        for(( j=$i; j<=$arrlength; j++ ))
+        do
+        if[ ${arr[$i]} -gt ${arr[j]} ]
+        then
+                temp=${arr[$i]}
+                arr[$i]=${arr[$j]}
+                arr[$j]=$temp
+        fi
+        done
+done
+echo "array in ascending order" ${arr[@]}
+echo ${arr[@]}
